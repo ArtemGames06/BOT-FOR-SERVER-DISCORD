@@ -1,26 +1,16 @@
 """
-
 Это переписанный код с видео-уроков по написаню бота для сервера дискорд. Автор кода: Fsoky (Fsoky Community)
 Здесь вы найдете весь функционал, кроме:
 карточки пользователя, проигрывание музыки в голосовом канале
-
 Также некоторые части кода были переписаны более верно и удобно, например команда help и ивент on_message
-
 Некоторые функции или строчки кода буду содержать в себе комментарий для описания того или иного действия.
-
 P.S если что-то не будет работать или возникнет какая-либо "заводская" ошибка, прошу отписать - https://vk.com/fsoky
-
-
 Links:
 https://t.me/officialfsokycommchat​​​ - телеграм чат
 https://vk.com/fsoky - группа в вк (присутствует беседа)
 https://pastebin.com/u/Fsoky​ - Pastebin автора
 https://github.com/Fsoky - GitHub автора
-
-
-
 01.04.2021 Fsoky Community
-
 """
 
 import discord
@@ -36,12 +26,9 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game("help")) # Изменяем статус боту
 
     """Статус
-
     Также можно установить не только Game, но и Watching или Streaming..
     Точные классы посмотрите в документации по discord.py
-
     https://discordpy.readthedocs.io/en/latest/api.html
-
     """
 
 
@@ -76,7 +63,6 @@ async def on_command_error(ctx, error):
     
     Работать с ошибками можно с двумя способами, как в видео (11 серия "Работа с ошибками")
     или же в данной функции. Легче всего использовать второй вариант.. 
-
     """
 
     print(error)
@@ -123,10 +109,8 @@ async def unban(ctx, user_id: int):
 @bot.command()
 async def help(ctx):
     """Команда help
-
     Чтобы не писать тысячу строк одинакового кода, лучше занесем название и описание команд в списки,
     и переберм в цикле.
-
     """
 
     embed = discord.Embed(
@@ -154,7 +138,6 @@ async def mute_user(ctx, member: discord.Member):
     await ctx.send(f"{ctx.author} gave role mute to {member}")
 
     """Временный мут
-
     Также вы можете сделать временный мут, для этого используйте модуль asyncio и метод sleep (asyncio.sleep).
     Пусть функция принимает параметр time_mute. Поставьте условие if "h" in time_mute:
     То есть, если вы пишите: !mute @user 1h, и в переменной time_mute находит букву "h" значит asyncio.sleep(time_mute[:1] * 3600)
